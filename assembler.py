@@ -1,5 +1,6 @@
 import sys
 import os
+import subprocess
 import pyperclip
 
 inppath = sys.argv[1]
@@ -8,18 +9,22 @@ inpdir, inpfile = os.path.split(inppath)
 
 os.chdir(inpdir)
 
+pp_command = "clang -w -x c -dD -E"
+
+pp_out = subprocess.run(f"{pp_command} {inpfile}",
+                        capture_output=True, text=True)
+
+pp_s = pp_out.stdout
+
 lines = []
 
-with open(inpfile) as inp:
-    for l in inp:
-        if l.startswith("#!include"):
-            includepath = l.strip().split(' ', 1)[1]
-            with open(includepath) as inc:
-                for il in inc:
-                    lines.append(il)
-        else:
-            lines.append(l)
+for l in pp_s.splitlines():
+    ls = l.strip()
+    if not ls.startswith("#") and not ls.startswith(";"):
+        lines.append(ls)
 
-out = ''.join(lines)
+out = '\n'.join(lines)
+
+# print(out)
 
 pyperclip.copy(out)

@@ -5,18 +5,18 @@ const acc r4
 const max r5
 const x r1
 
-# Get length of file
+; Get length of file
 sub | i1 | i2 0 1 r0
 mov r0 | fil _ len
 sub | i2 len 1 len
 
 xor fp fp fp
 
-# Loop over groups
+; Loop over groups
 label loop1
 
 xor acc acc acc
-# Loop over group
+; Loop over group
 label loop2
 add | i1 8 pc stk
 mov | i1 parse_uint _ pc
@@ -25,7 +25,7 @@ add x acc acc
 
 add | i1 1 fp fp
 
-# Loop if not double lineshift
+; Loop if not double lineshift
 and | i2 fp | fil 0xff x
 jp | neq | i2 x '\n' loop2
 
@@ -42,4 +42,4 @@ mov | i1 print_uint _ pc
 
 halt
 
-#!include ../../util/util.s
+#include "../../util/util.s"
