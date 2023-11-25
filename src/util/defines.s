@@ -5,4 +5,9 @@
 #define call(x) add | i1 8 pc stk jmp(x)
 #define return mov stk _ pc
 
+#define swap(a, b) xor a b a xor b a b xor a b a
+
+#define jf(x) add | i1 x * 4 pc pc
+#define jr(x) sub | i2 pc x * 4 pc
+
 #endif
