@@ -45,13 +45,13 @@ label loop1
 
     jp | le fp len loop1
 
-    add max2 max3 max3
-    add max1 max3 max3
+add max2 max3 max3
+add max1 max3 max3
 
-    mov max3 _ r0
-    xor r1 r1 r1
-    call(print_uint)
+mov max3 _ r0
+xor r1 r1 r1
+call(print_uint)
 
-halt 0 0 0
+halt _ _ _
 
 #include "../../util/util.s"
