@@ -1,7 +1,8 @@
-#ifndef defines
-#define defines
+#ifndef __defines
+#define __defines
 
-#define call(x) add | i1 8 pc stk mov | i1 x _ pc
+#define jmp(x) mov | i1 x _ pc
+#define call(x) add | i1 8 pc stk jmp(x)
 #define return mov stk _ pc
 
 #endif

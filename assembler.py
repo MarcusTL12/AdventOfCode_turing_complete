@@ -20,7 +20,7 @@ lines = []
 
 for l in pp_s.splitlines():
     ls = l.strip()
-    if not ls.startswith("#") and not ls.startswith(";"):
+    if not ls.startswith("#") and not ls.startswith(";") and len(ls) > 0:
         lines.append(ls)
 
 out = '\n'.join(lines)

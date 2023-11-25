@@ -15,31 +15,31 @@ xor fp fp fp
 ; Loop over groups
 label loop1
 
-xor acc acc acc
-; Loop over group
-label loop2
-add | i1 8 pc stk
-mov | i1 parse_uint _ pc
+    xor acc acc acc
+    ; Loop over group
+    label loop2
+        add | i1 8 pc stk
+        mov | i1 parse_uint _ pc
 
-add x acc acc
+        add x acc acc
 
-add | i1 1 fp fp
+        add | i1 1 fp fp
 
-; Loop if not double lineshift
-and | i2 fp | fil 0xff x
-jp | neq | i2 x '\n' loop2
+        ; Loop if not double lineshift
+        and | i2 fp | fil 0xff x
+        jp | neq | i2 x '\n' loop2
 
-jp | le acc max notmax
-mov acc _ max
-label notmax
+    jp | le acc max notmax
+    mov acc _ max
+    label notmax
 
-jp | le fp len loop1
+    jp | le fp len loop1
 
-mov max _ r0
-xor r1 r1 r1
-add | i2 pc 8 stk
-mov | i1 print_uint _ pc
+    mov max _ r0
+    xor r1 r1 r1
+    add | i2 pc 8 stk
+    mov | i1 print_uint _ pc
 
-halt
+halt 0 0 0
 
 #include "../../util/util.s"
