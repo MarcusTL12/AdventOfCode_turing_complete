@@ -3,15 +3,9 @@
 const fp r0
 const x r1
 const acc r2
-const len r3
-const d1 r4
-const d2 r5
-const i r9
-
-; Get length of file
-sub | i1 | i2 0 1 r0
-mov r0 | fil _ len
-sub | i2 len 1 len
+const d1 r3
+const d2 r4
+const i r5
 
 xor fp fp fp
 xor acc acc acc
