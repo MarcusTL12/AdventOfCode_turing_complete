@@ -9,7 +9,8 @@ inpdir, inpfile = os.path.split(inppath)
 
 os.chdir(inpdir)
 
-pp_command = "clang -w -x c -dD -E"
+# pp_command = "clang -w -x c -dD -E"
+pp_command = "gcc -w -x c -dD -E"
 
 pp_out = subprocess.run(f"{pp_command} {inpfile}",
                         capture_output=True, text=True)

@@ -22,14 +22,15 @@ label loop1
     mov | i1 2 _ r1
     call(read_line)
     mov fp _ stk
-    mov r1 _ r0
-    sub | i2 r1 2 r1
+    mov | i1 2 _ r0
+    sub r1 r0 r1
 
     label loop2
-        mov | i1 2 _ r0
-        mov r1 _ stk
+        add | i2 r0 1 stk
+        sub | i2 r1 1 stk
         call(parse_start)
         mov stk _ r1
+        mov stk _ r0
 
         jp | eq | i2 x 0 loop2_continue
 
@@ -39,8 +40,6 @@ label loop1
         mov x _ d1
 
         label loop2_continue
-        add | i2 r0 1 r0
-        sub | i2 r1 1 r1
         jp | neq | i2 r1 0 loop2
 
     mov stk _ fp
@@ -70,7 +69,7 @@ halt _ _ _
 ;   r3
 label parse_start
     sub | i2 r0 | mem '0' r2
-    jp | leq | i2 r2 '9' parse_start_return
+    jp | leq | i2 r2 9 parse_start_return
 
     ; Might be text
 
