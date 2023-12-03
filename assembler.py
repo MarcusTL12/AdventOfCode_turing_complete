@@ -22,7 +22,7 @@ lines = []
 for l in pp_s.splitlines():
     ls = l.strip()
     if not ls.startswith("#") and not ls.startswith(";") and len(ls) > 0:
-        lines.append(ls)
+        lines.append(ls.split(';')[0])
 
 out = '\n'.join(lines)
 
