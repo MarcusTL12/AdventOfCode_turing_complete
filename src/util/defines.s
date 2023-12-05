@@ -10,4 +10,7 @@
 #define jf(x) add | i1 x * 4 pc pc
 #define jr(x) sub | i2 pc x * 4 pc
 
+#define mov_mem2reg(c, r) mov | i1 c _ r mov r | mem _ r
+#define mov_reg2mem(r, m) mov | i1 c _ ovf mov r _ ovf | mem
+
 #endif
