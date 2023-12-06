@@ -45,11 +45,11 @@ label parse_maps
         call(parse_uint)
         mov r1 _ r3 | mem
         add | i2 r4 | mem 1 r4 | mem
-        add | i2 r3 | r3
+        add | i2 r3 1 r3
         and | i2 r0 | fil 0xffff r1
         jp | neq | i2 r1 "\n\n" parse_maps_main_loop
 
     mov r3 _ r1
     add | i2 r0 2 r0
-    jp | eq | i2 r0 | fil 0 parse_maps
+    jp | neq | i2 r0 | fil 0 parse_maps
     return
